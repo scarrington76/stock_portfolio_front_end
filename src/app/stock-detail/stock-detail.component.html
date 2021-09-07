@@ -1,0 +1,12 @@
+<div *ngIf="stock">
+
+    <h2>{{stock.name | uppercase}} Details</h2>
+    <div><span>ticker: </span>{{stock.ticker}}</div>
+    <div>
+      <label for="stock-name">stock name: </label>
+      <input id="stock-name" [(ngModel)]="stock.name" placeholder="name">
+    </div>
+
+    <button (click)="save()">Save</button>
+  
+  </div>

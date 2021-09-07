@@ -1,0 +1,8 @@
+<h2>My Portfolio</h2>
+<ul class="stocks">
+  <li *ngFor="let stock of stocks">
+    <a routerLink="/detail/{{stock.ticker}}">
+    <span class="badge">{{stock.ticker}}</span>{{stock.name}}
+    </a>
+  </li>
+</ul>
