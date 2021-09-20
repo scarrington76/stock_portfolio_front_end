@@ -8,7 +8,7 @@ import { Stock } from './stock';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const stocks = [
-      { ticker: 'AAPL', name: 'Apple Inc'},
+      { ticker: 'AAPL', name: 'Apple Inc', pl_dollar: 5.32},
       { ticker: 'NOBL', name: 'ProShares S&P 500 Dividend Aristocrats ETF'},
       { ticker: 'RGA', name: 'Reinsurance Group of America Inc'},
       { ticker: 'IPOS', name: 'Renaissance International IPO ETF'},
@@ -26,6 +26,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { ticker: 'TGT', name:  'Target Corporation'},
       { ticker: 'SPY', name:  'SPDR S&P 500 ETF Trust'},
       { ticker: 'GWW', name:  'W W Grainger Inc'},
+      { ticker: 'XXX', name: 'Trial'}
     ];
     return {stocks};
   }

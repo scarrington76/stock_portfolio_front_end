@@ -1,3 +1,8 @@
+@import '~primeng/resources/primeng.min.css';
+@import '~primeng/resources/themes/bootstrap4-light-blue/theme.css';
+@import '~primeicons/primeicons.css';
+
+
 /* Application-wide Styles */
 h1 {
     color: #369;

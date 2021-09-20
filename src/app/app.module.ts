@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { TopPageComponent } from './toppage/toppage.component';
+import {MenuItem} from 'primeng/api';                  //api
+import {TableModule} from 'primeng/table';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     StocksComponent,
     StockDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    TopPageComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +31,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppRoutingModule,
     HttpClientModule,
     HttpClientModule,
+    TableModule,
   // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
   // and returns simulated server responses.
   // Remove it when a real server is ready to receive requests.

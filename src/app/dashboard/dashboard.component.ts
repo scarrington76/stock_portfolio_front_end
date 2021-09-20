@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getStocks(): void {
-    this.stockService.getStocks()
-      .subscribe(stocks => this.stocks = stocks.slice(0, 4));
-  }
+    this.stockService.getStocks().subscribe(data => 
+      this.stocks = data
+    );}
 }

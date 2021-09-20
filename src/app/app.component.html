@@ -1,7 +1,16 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/stocks">Stocks</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<section class="header">
+  <h1>AI Stock Tracking</h1>
+  <p>A research project into AI trading on Wall Street</p>
+</section>
+
+<section>
+  <div class="row flex-container">
+    <div class="child" style="margin-right: 200px;">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="child">
+      <router-outlet></router-outlet>
+      <app-messages></app-messages>
+    </div>
+  </div>
+</section>
