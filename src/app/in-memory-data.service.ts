@@ -8,27 +8,40 @@ import { Stock } from './stock';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const stocks = [
-      { ticker: 'AAPL', name: 'Apple Inc', pl_dollar: 5.32},
-      { ticker: 'NOBL', name: 'ProShares S&P 500 Dividend Aristocrats ETF'},
-      { ticker: 'RGA', name: 'Reinsurance Group of America Inc'},
-      { ticker: 'IPOS', name: 'Renaissance International IPO ETF'},
-      { ticker: 'CURI',  name: 'Curiositystream Inc'},
-      { ticker: 'EPD', name:  'Enterprise Products Partners L.P.'},
-      { ticker: 'FHN', name:  'First Horizon Corp'},
-      { ticker: 'MFC', name:  'Manulife Financial Corporation'},
-      { ticker: 'VNM', name:  'VanEck Vectors Vietnam Etf'},
-      { ticker: 'KBH', name:  'KB Home'},
-      { ticker: 'KL', name:  'Kirkland Lake Gold Ltd'},
-      { ticker: 'FRT', name:  'Federal Realty Investment Trust'},
-      { ticker: 'EVR', name:  'Evercore Inc'},
-      { ticker: 'UAL', name:  'United Airlines Holdings Inc'},
-      { ticker: 'MDT', name:  'Medtronic PLC'},
-      { ticker: 'TGT', name:  'Target Corporation'},
-      { ticker: 'SPY', name:  'SPDR S&P 500 ETF Trust'},
-      { ticker: 'GWW', name:  'W W Grainger Inc'},
-      { ticker: 'XXX', name: 'Trial'}
+      {
+        ticker: 'AAPL',
+        name: 'Apple Inc',
+        pl_dollar: 5.35,
+        daily_change: 0.31,
+        cost_basis: 5032,
+        position: 306,
+        mkt_value: 8000,
+        yield: 5.71,
+        pl_pct: 3.2,
+        real_pct: 0.1,
+        real_dollar: 50,
+        last_tx: 1632429695,
+      },
+      { ticker: 'NOBL', name: 'ProShares S&P 500 Dividend Aristocrats ETF' },
+      { ticker: 'RGA', name: 'Reinsurance Group of America Inc' },
+      { ticker: 'IPOS', name: 'Renaissance International IPO ETF' },
+      { ticker: 'CURI', name: 'Curiositystream Inc' },
+      { ticker: 'EPD', name: 'Enterprise Products Partners L.P.' },
+      { ticker: 'FHN', name: 'First Horizon Corp' },
+      { ticker: 'MFC', name: 'Manulife Financial Corporation' },
+      { ticker: 'VNM', name: 'VanEck Vectors Vietnam Etf' },
+      { ticker: 'KBH', name: 'KB Home' },
+      { ticker: 'KL', name: 'Kirkland Lake Gold Ltd' },
+      { ticker: 'FRT', name: 'Federal Realty Investment Trust' },
+      { ticker: 'EVR', name: 'Evercore Inc' },
+      { ticker: 'UAL', name: 'United Airlines Holdings Inc' },
+      { ticker: 'MDT', name: 'Medtronic PLC' },
+      { ticker: 'TGT', name: 'Target Corporation' },
+      { ticker: 'SPY', name: 'SPDR S&P 500 ETF Trust' },
+      { ticker: 'GWW', name: 'W W Grainger Inc' },
+      { ticker: 'XXX', name: 'Trial' }
     ];
-    return {stocks};
+    return { stocks };
   }
 
   // Overrides the genId method to ensure that a stock always has an id.

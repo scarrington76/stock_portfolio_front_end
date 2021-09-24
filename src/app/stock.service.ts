@@ -41,7 +41,7 @@ export class StockService {
     );
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a StockService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`StockService: ${message}`);
   }

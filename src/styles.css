@@ -1,6 +1,7 @@
 @import '~primeng/resources/primeng.min.css';
 @import '~primeng/resources/themes/bootstrap4-light-blue/theme.css';
 @import '~primeicons/primeicons.css';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 
 /* Application-wide Styles */
