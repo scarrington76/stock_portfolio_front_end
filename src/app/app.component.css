@@ -28,6 +28,7 @@ p {
   background: #79869c;
   color: white;
   border-radius: 10px;
+  background-image: url('src/assets/photos/banner.jpg');
 }
 
 .flex-container {
