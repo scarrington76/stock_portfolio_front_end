@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class StockService {
     private http: HttpClient,
   ) { }
 
-  getStocks(): Observable<Stock[]> {
+  getStocks1(): Observable<Stock[]> {
     const stocks = of(STOCKS);
     this.messageService.add('StockService: fetched stocks');
     return this.http.get<Stock[]>(this.stocksUrl)
@@ -39,6 +40,14 @@ export class StockService {
       tap(_ => this.log('fetched stock ticker=${ticker}')),
       catchError(this.handleError<Stock>('getStock ticker=${ticker}'))
     );
+  }
+
+  getStocks() {
+    let url =  environment.server + '/stocks'
+    return this.http.get<any>(url, {}).pipe(
+        tap(_ => this.log('fetched stocks')),
+        catchError(this.handleError<Stock>('Unable to get stocks'))
+      );
   }
 
   /** Log a StockService message with the MessageService */

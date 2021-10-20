@@ -45,7 +45,7 @@ func OpenConnection() *sql.DB {
 func GETHandler(w http.ResponseWriter, r *http.Request) {
 	db := OpenConnection()
 
-	rows, err := db.Query("SELECT * from marketdata")
+	rows, err := db.Query("SELECT * FROM marketdata ORDER BY last_tx DESC LIMIT 1")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -87,7 +87,8 @@ func POSTHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", GETHandler)
+	fmt.Print("API initiated")
+	http.HandleFunc("/stocks", GETHandler)
 	http.HandleFunc("/insert", POSTHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
