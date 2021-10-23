@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
 )
 
@@ -86,9 +87,38 @@ func POSTHandler(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 }
 
+// CORS Middleware
+func CORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+		// Set headers
+		w.Header().Set("Access-Control-Allow-Headers:", "*")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "*")
+
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		fmt.Println("ok")
+
+		// Next
+		next.ServeHTTP(w, r)
+		return
+	})
+}
+
 func main() {
+
+	r := mux.NewRouter()
+
+	// We use our custom CORS Middleware
+	r.Use(CORS)
+
 	fmt.Print("API initiated")
-	http.HandleFunc("/api/stocks", GETHandler)
-	http.HandleFunc("/api/insert", POSTHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	r.HandleFunc("/api/stocks", GETHandler)
+	r.HandleFunc("/api/insert", POSTHandler)
+	http.Handle("/", r)
+	log.Fatal(http.ListenAndServe(":8080", r))
 }

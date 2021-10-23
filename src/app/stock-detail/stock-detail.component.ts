@@ -10,7 +10,7 @@ import { StockService } from '../stock.service';
   styleUrls: ['./stock-detail.component.css']
 })
 export class StockDetailComponent implements OnInit {
-  @Input() stock?: Stock;
+  stocks: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,13 +19,12 @@ export class StockDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getStock();
+    this.getStocks();
   }
 
-  getStock(): void {
-    const ticker = String(this.route.snapshot.paramMap.get('ticker'));
-    this.stockService.getStock(ticker).subscribe(stock =>
-      this.stock = stock
+  getStocks(): void {
+    this.stockService.getStocks().subscribe(data =>
+      this.stocks = data
     )
   }
   
@@ -33,11 +32,11 @@ export class StockDetailComponent implements OnInit {
     this.location.back();
   }
 
-  save(): void {
-    if (this.stock) {
-      this.stockService.updateStock(this.stock)
-        .subscribe(() => this.goBack());
-    }
-  }
+  // save(): void {
+  //   if (this.stock) {
+  //     this.stockService.updateStock(this.stock)
+  //       .subscribe(() => this.goBack());
+  //   }
+  // }
 
 }
