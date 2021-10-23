@@ -34,9 +34,9 @@ export class TopPageComponent implements OnInit {
     ];
   }
 
-  getStocks(): void {
-    this.stockService.getStocks().subscribe(data =>
-      this.stocks = data
-    );
-  }
+  getStocks() {
+    this.stockService.getStocks().subscribe(data => {
+      this.stocks = data;
+      console.log(this.stocks);
+    })};
 }

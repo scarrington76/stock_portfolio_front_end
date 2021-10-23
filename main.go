@@ -18,7 +18,7 @@ type Stock struct {
 
 const (
 	host     = "0.0.0.0"
-	port     = 5432
+	port     = 5433
 	user     = "postgres"
 	password = "admin"
 	dbname   = "test"
@@ -88,7 +88,7 @@ func POSTHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	fmt.Print("API initiated")
-	http.HandleFunc("/stocks", GETHandler)
-	http.HandleFunc("/insert", POSTHandler)
+	http.HandleFunc("/api/stocks", GETHandler)
+	http.HandleFunc("/api/insert", POSTHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

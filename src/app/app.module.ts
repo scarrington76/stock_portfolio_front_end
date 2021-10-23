@@ -9,11 +9,12 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { TopPageComponent } from './toppage/toppage.component';
 import {MenuItem} from 'primeng/api';                  //api
 import {TableModule} from 'primeng/table';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,12 +33,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HttpClientModule,
     HttpClientModule,
     TableModule,
-  // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-  // and returns simulated server responses.
-  // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-)
+    NgbModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -43,7 +43,8 @@ export class StockService {
   }
 
   getStocks() {
-    let url =  environment.server + '/stocks'
+    let url =  environment.server + '/api/stocks'
+    console.log("the url is" + url)
     return this.http.get<any>(url, {}).pipe(
         tap(_ => this.log('fetched stocks')),
         catchError(this.handleError<Stock>('Unable to get stocks'))
