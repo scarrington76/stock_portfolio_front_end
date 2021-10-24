@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Stock } from './stock';
-import { STOCKS } from './mock-stocks';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -22,16 +21,6 @@ export class StockService {
     private messageService: MessageService,
     private http: HttpClient,
   ) { }
-
-  getStocks1(): Observable<Stock[]> {
-    const stocks = of(STOCKS);
-    this.messageService.add('StockService: fetched stocks');
-    return this.http.get<Stock[]>(this.stocksUrl)
-      .pipe(
-        tap(_ => this.log('fetched stocks')),
-        catchError(this.handleError<Stock[]>('getStocks', []))
-      );
-  }
 
   getStock(ticker: string): Observable<Stock> {
     const url = '${this.stocksUrl}/${ticker}';

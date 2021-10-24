@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Stock } from '../stock';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';

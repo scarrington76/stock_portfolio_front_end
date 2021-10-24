@@ -1,19 +1,18 @@
-<p-table [value]="stocks" styleClass="p-datatable-gridlines">
-    
+<p-table styleClass="p-datatable-gridlines" [columns]="cols" [value]="stocks">
     <ng-template pTemplate="caption">
         Today's Portfolio Summary
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="header" let-columns>
         <tr>
-            <th *ngFor="let col of cols">
+            <th *ngFor="let col of columns">
                 {{col.header}}
             </th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-stock>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
-            <td *ngFor="let col of cols">
-                    {{stock[col.field]}}
+            <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
             </td>
         </tr>
     </ng-template>

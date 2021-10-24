@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Stock } from '../stock';
-import { StockService } from '../stock.service';
-import { Table, TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-toppage',
   templateUrl: './toppage.component.html',
   styleUrls: ['./toppage.component.css']
 })
-export class TopPageComponent implements OnInit {
-  stocks: Stock[] = [];
+export class TopPageComponent {
+  @Input() stocks!: Stock[];
+  cols: { field: string; header: string; }[] = [];
 
-  cols: any[] = [];
+  // cols: any[];
 
-  constructor(private stockService: StockService) { }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.getStocks();
-
     this.cols = [
       { field: 'ticker', header: 'Ticker' },
+      { field: 'price', header: 'Price' },
       { field: 'name', header: 'Name' },
       { field: 'daily_change', header: 'Change' },
       { field: 'pl_dollar', header: 'P&L $$' },
@@ -33,10 +32,4 @@ export class TopPageComponent implements OnInit {
       { field: 'last_tx', header: 'Last Transaction Date' },
     ];
   }
-
-  getStocks() {
-    this.stockService.getStocks().subscribe(data => {
-      this.stocks = data;
-      console.log(this.stocks);
-    })};
 }
